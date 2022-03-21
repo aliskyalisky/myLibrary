@@ -52,23 +52,23 @@
 
     <div class="bookinput closed">
         <h3>Add a book</h3>
-        <form action="#" class="bookinputform">
+        <form action="#" class="bookinputform" novalidate>
             <div class="inputbox">
                 <label for="booktitle">Title</label>
                 <input type="text" id="booktitle"
-                name="booktitle">
+                name="booktitle" required>
             </div>
 
             <div class="inputbox">
                 <label for="bookauthor">Author</label>
                 <input type="text" id="bookauthor"
-                name="bookauthor">
+                name="bookauthor" required>
             </div>
 
             <div class="inputbox">
                 <label for="bookpages">Pages</label>
                 <input type="text" id="bookpages"
-                name="bookpages" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                name="bookpages" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
             </div>
 
             <div class="inputread">

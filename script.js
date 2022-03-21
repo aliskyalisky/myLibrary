@@ -8,6 +8,7 @@ const inputAuthor = document.querySelector('#bookauthor');
 const inputPages = document.querySelector('#bookpages');
 const cardReadBtns = document.querySelector('.bookcardread');
 const bookCards = document.querySelector('.content');
+const bookInputForm = document.querySelector('.bookinputform')
 let library = {
     books: []
 };
@@ -26,18 +27,47 @@ inputReadBtn.addEventListener('click', function () {
 
     if (inputReadBtn.classList.contains('readyes')) {
         inputIsRead = true;
-    } else {
-        inputIsRead = false;
     }
 }); 
 
+function checkError () {
+    if (inputTitle.validity.valueMissing) {
+        inputTitle.setCustomValidity('Provide a title please');
+        inputTitle.reportValidity();
+        return;
+    } else {
+        inputTitle.setCustomValidity("");
+    }
+
+    if (inputAuthor.validity.valueMissing) {
+        inputAuthor.setCustomValidity("Give the book author!");
+        inputAuthor.reportValidity();
+        return;
+    } else {
+        inputAuthor.setCustomValidity('');
+    }
+
+    if (inputPages.validity.valueMissing) {
+        inputPages.setCustomValidity('How many pages does it have?');
+        inputPages.reportValidity();
+        return;
+    } else {
+        inputPages.setCustomValidity('');
+    }
+}
+
 inputSubmit.addEventListener('click', function () {
+    if (bookInputForm.checkValidity()) {
     addBook();
     addButton.classList.toggle('addclicked');
     inputBox.classList.toggle('closed');
     clearInput();
     updateLibrary();
+    } else {
+        checkError();
+    }
 });
+
 
 
 function Book(title, author, pages) {

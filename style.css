@@ -248,3 +248,7 @@ button.bookcardread.bookcardready {
 .readbtnball.readyes {
     transform: translateX(27px);
 }
+
+#booktitle:invalid, #bookauthor:invalid, #bookpages:invalid {
+    border: 2px solid red;
+}
